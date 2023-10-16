@@ -1,0 +1,137 @@
+<div class="container">
+    <h2 style="margin-top: 20px;"><i class="bi bi-receipt-cutoff"></i> Xác nhận đơn hàng của bạn </h2>
+    <div class="row">
+        <div class="col-lg-8 cart">
+        </div>
+    </div><br>
+    <div class="card-bill">
+        <div class="product border-bottom table-responsive">
+            <table class="table table-borderless">
+                <tr>
+                    <th>STT</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                </tr>
+                <!--product-1-->
+
+                <tr *ngFor="let item of cartItem, let i = index;" class="cart-item">
+                    <td>{{i + 1}}</td>
+                    <td>
+                        <div class="product-infor-cart">
+                            <!-- <img [src]="item.imgPath" alt=""> -->
+                            <div class="name-product-cart">
+                                {{item.productName}} {{item.productSize}}
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{item.quantity}}</td>
+                    <td>
+                        <div class="into-money-cart">{{item.FinalPrice() | currency:'VND':'' }} ₫</div>
+                    </td>
+                </tr>
+
+
+                <!--end-product-1-->
+
+            </table>
+        </div>
+
+        <div action="#">
+            <div class="row d-flex order-infor">
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td>
+                                    <div class="text-left"> <span class="text-muted">Tên khách hàng</span> </div>
+                                </td>
+                                <td>
+                                    <!-- <div class="text-right"> <span>{{customerInfo.name}}</span> </div> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-left"> <span class="text-muted">Số điện thoại</span> </div>
+                                </td>
+                                <td>
+                                    <!-- <div class="text-right"><span>{{customerInfo.phoneNumber}}</span></div> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-left"> <span class="text-muted">Ngày đặt</span></div>
+                                </td>
+                                <!-- <td>
+                                    <div class="text-right"><span>{{date}}</span>
+                                    </div>
+                                </td> -->
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <div style="margin-bottom: 12px;" class="text-left"> <span class="text-muted">Địa
+                                            chỉ giao hàng</span></div>
+                                    <!-- <textarea class="order-address-input" name="addressData" [(ngModel)]="addressData"
+                                        style="width: 100%;" placeholder="Nhập địa chỉ..." required></textarea> -->
+                                        <input id="diachi" [(ngModel)]="diachi" type="text" name="diachi" class="form-control">
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td>
+                                    <div class="text-left"> <span class="text-muted">Tổng phụ</span></div>
+                                </td>
+                                <td>
+                                    <div class="text-right"> <span></span> 0đ</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-left"> <span class="text-muted">Phí vận chuyển</span></div>
+                                </td>
+                                <td>
+                                    <div class="text-right"> <span>0đ</span></div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="text-left"> <span class="text-muted">Khuyến mãi</span> </div>
+                                </td>
+                                <td>
+                                    <div class="text-right"> <span class="text-success">0đ</span> </div>
+                                </td>
+                            </tr>
+                            <tr class="border-top border-bottom">
+                                <td>
+                                    <div class="text-left"> <span class="font-weight-bold">Tổng tiền</span> </div>
+                                </td>
+                                <td>
+                                    <div class="text-right"> <span class="font-weight-bold">{{finalPrice |
+                                            currency:'VND':'' }} ₫</span> </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="order-action">
+                        <button class="btn btn-info" type="button" (click)="onPaymentConfirmed()">Thanh toán</button>
+                        <button class="btn btn-danger">Hủy</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

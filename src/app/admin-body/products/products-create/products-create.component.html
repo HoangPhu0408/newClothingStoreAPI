@@ -1,0 +1,86 @@
+<form #f="ngForm">
+    <div class="checkbox-img">
+        <div class="box-img-admin">
+            <img id="blah" [src]="" alt="" width="80px" height="80px" /><br><br>
+            <input required name="image1Url" class="form-control" id="imgInp" style="width: 80px;" />
+            <label for="imgInp">URL Ảnh 1</label>
+        </div>
+        <div class="box-img-admin">
+            <img id="blah" [src]="" alt="" width="80px" height="80px" /><br><br>
+            <input required="" name="image2Url" class="form-control" id="imgInp" style="width: 80px;" />
+            <label for="imgInp">URL Ảnh 2</label>
+
+        </div>
+        <div class="box-img-admin">
+            <img id="blah" [src]="" alt="" width="80px" height="80px" /><br><br>
+            <input required name="image3Url" class="form-control" id="imgInp" style="width: 80px;" />
+            <label for="imgInp">URL Ảnh 3</label>
+
+        </div>
+    </div>
+
+
+    <div class="detail-admin ">
+        <div class="projects">
+            <div class="card-body">
+
+                <span>Tên sản phẩm</span>
+                <input type="text" ngModel name="ProductName" placeholder="Tên sản phẩm" class="form-control"
+                    style="height: 40px; padding-left: 5px;" /><br>
+
+                <input type="text" ngModel name="CreatedDate" placeholder="Ngày tạo" class="form-control"
+                    style="height: 40px; padding-left: 5px;" /><br>
+
+                <div class="form-check">
+                    <!-- checkbox size -->
+                    <input ngModel name="selectedSize1" (click)=" onSizeSClick(selectedSizeS)" class="form-check-input"
+                        type="checkbox" [value]="btnSizeS" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ btnSizeS }}
+                    </label>
+                    <input *ngIf="stateSizeS" ngModel name="Amount1" placeholder="Nhập số lượng Size S">
+
+                </div>
+                <div class="form-check">
+                    <input (click)=" onSizeMClick()" class="form-check-input" type="checkbox" [value]="btnSizeM"
+                        id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ btnSizeM }}
+                    </label>
+                    <input *ngIf="stateSizeM" ngModel name="Amount2" placeholder="Nhập số lượng Size M">
+
+                </div>
+                <div class="form-check">
+                    <input (click)=" onSizeLClick()" class="form-check-input" type="checkbox" [value]="btnSizeL"
+                        id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ btnSizeL }}
+                    </label>
+                    <input *ngIf="stateSizeL" ngModel name="Amount3" placeholder="Nhập số lượng Size L">
+                </div>
+         
+
+                <span>Giá</span>
+                <input ngModel type="number" id="text" name="initialPrice" style="height: 40px; padding-left: 5px;"
+                    class="form-control" size="30" placeholder="Giá sản phẩm" />
+
+                <input type="number" ngModel id="fname" name="officialPrice" class="form-control"
+                    placeholder="Giá chính thức" style="height: 40px; padding-left: 5px;" /><br>
+
+                <div class="input-box" style="margin:10px 0px">
+                    <label for="cars">Thương hiệu:</label>
+
+                </div>
+                <select name="categoryId" [(ngModel)]="categoriesID" class="form-control">
+                    <option *ngFor="let item of cateLst" [value]="item.categoryId">{{item.categoryName}}</option>
+                </select> <br>
+                <textarea class="input-introd-prod form-control" ngModel name="productIntroduction"
+                    placeholder="Giới thiệu sản phẩm" rows="4"></textarea>
+                <span style="color: red;"></span>
+                <button (click)="CreateProduct(f)" type="submit" class="btn btn-success"
+                    style="width:100%;margin-top: 20px; height: 35px;">Lưu</button>
+                <!-- <button  class="btn btn-danger" style="width: 29%; margin-left: 5px; height: 35px;">Xóa</button> -->
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,91 @@
+<form (ngSubmit)="EditProd()">
+
+    <div class="checkbox-img">
+        <div class="box-img-admin">
+            <img id="blah" [src]="image1Url" alt="" width="80px" height="80px" /><br><br>
+            <input required [(ngModel)]="image1Url" name="image1Url" class="form-control" id="imgInp"
+                style="width: 80px;" />
+            <label for="imgInp">URL Ảnh 1</label>
+        </div>
+        <div class="box-img-admin">
+            <img id="blah" [src]="image2Url" alt="" width="80px" height="80px" /><br><br>
+            <input required="" [(ngModel)]="image2Url" name="image2Url" class="form-control" id="imgInp"
+                style="width: 80px;" />
+            <label for="imgInp">URL Ảnh 2</label>
+
+        </div>
+        <div class="box-img-admin">
+            <img id="blah" [src]="image3Url" alt="" width="80px" height="80px" /><br><br>
+            <input required [(ngModel)]="image3Url" name="image3Url" class="form-control" id="imgInp"
+                style="width: 80px;" />
+            <label for="imgInp">URL Ảnh 3</label>
+
+        </div>
+    </div>
+
+
+    <div class="detail-admin ">
+        <div class="projects">
+            <div class="card-body">
+
+                <span>Tên sản phẩm</span>
+                <input type="text" [(ngModel)]="product.productName" name="productName" [value]="product.productName"
+                    class="form-control" style="height: 40px; padding-left: 5px;" /><br>
+
+                <span>Ngày tạo</span>
+                <input type="text" ngModel name="CreatedDate" placeholder="Ngày tạo" class="form-control"
+                    style="height: 40px; padding-left: 5px;" /><br>
+
+                <label>Số lượng:</label>
+                <input type="number" [(ngModel)]="product.amount1" name="amount1" [value]="product.amount1"
+                    placeholder="Số lượng" min="1" max="10000" class="form-control"
+                    style="width:100px; height: 40px; padding-left: 5px;"><br>
+                <input type="number" [(ngModel)]="product.amount2" name="amount2" [value]="product.amount2"
+                    placeholder="Số lượng" min="1" max="10000" class="form-control"
+                    style="width:100px; height: 40px; padding-left: 5px;"><br>
+                <input type="number" [(ngModel)]="product.amount3" name="amount3" [value]="product.amount3"
+                    placeholder="Số lượng" min="1" max="10000" class="form-control"
+                    style="width:100px; height: 40px; padding-left: 5px;"><br>
+
+                <span>Giá gốc</span>
+                <input type="number" [(ngModel)]="product.initialPrice" name="initialPrice" [value]="product.initialPrice"
+                    style="height: 40px; padding-left: 5px;" class="form-control" size="30"
+                    placeholder="Giá sản phẩm" />
+
+                <span>Giá chính thức</span>
+                <input type="number" [(ngModel)]="product.officialPrice" name="officialPrice" [value]="product.officialPrice"
+                 class="form-control"
+                    placeholder="Giá chính thức" style="height: 40px; padding-left: 5px;" /><br>
+
+
+
+                <!-- <span>Giá Gốc</span>
+                <input type="text" [(ngModel)]="product.price" name="price" [value]="product.price" id="fname"
+                    class="form-control" placeholder="Giá gốc" style="height: 40px; padding-left: 5px;" /><br> -->
+
+
+                <div class="input-box" style="margin:10px 0px">
+                    <label for="cars">Thương hiệu:</label>
+
+                </div>
+                <select [(ngModel)]="product.categoryId" name="categoryId" class="form-control">
+                    <!-- <option [value]="product.categoryId">{{product.categoryId}}</option> -->
+
+
+
+                    <option *ngFor="let item of cateLst" [value]="item.categoryId">{{item.categoryName}}</option>
+                </select> <br>
+                <textarea [(ngModel)]="product.introduction" name="introduction" [value]="product.introduction"
+                    class="input-introd-prod form-control" placeholder="Giới thiệu sản phẩm"
+                    rows="4">{{product.introduction}}</textarea>
+                <button type="submit" class="btn btn-success"
+                    style="width:100%;margin-top: 20px; height: 35px;">Lưu</button>
+                <!-- <button  class="btn btn-danger" style="width: 29%; margin-left: 5px; height: 35px;">Xóa</button> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

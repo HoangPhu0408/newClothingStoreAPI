@@ -1,0 +1,33 @@
+.prod-options {
+    margin-left: 100px;
+}
+
+.full-detail {
+    display: flex;
+}
+
+.gallery-container {
+    flex-direction: column;
+    margin-left: 115px;
+}
+
+.large-image img {
+    width: 400px;
+    height: auto;
+}
+
+.small-images {
+    display: flex;
+    margin-top: 20px;
+}
+
+.thumbnail-container img {
+    margin-right: 10px;
+    width: 127px;
+    height: 100px;
+}
+.zoom-container {
+    width: 400px;
+    /* Định dạng kích thước khung chứa */
+    height: 400px;
+}

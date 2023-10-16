@@ -1,0 +1,46 @@
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    <a class="btn btn-success" routerLink="/products-create">Thêm sản phẩm</a>
+</p>
+<div >
+    <div>
+        <div>
+            <div class="row" style="font-weight: bold;">
+                <div class="col-lg-2">Hình ảnh</div>
+                <div class="col-lg-3">Tên sản phẩm</div>
+                <div class="col-lg-1">Size S</div>
+                <div class="col-lg-1">Size M</div>
+                <div class="col-lg-1">Size L</div>
+
+                <div class="col-lg-2">Giá bán</div>
+                <div class="col-lg-1">Công cụ</div>
+            </div>
+            <hr>
+        </div>
+        <div class="product-list-items">
+            <!-- item-product -->
+            <div *ngFor="let item of lstProduct">
+                <div class="row" style="align-items: center;" >
+                    <div class="col-lg-2"><img [src]="item.imgPath1" width="120px" height="120px"></div>
+                    <div class="col-lg-3">{{item.productName}}</div>
+                    <div class="col-lg-1">{{item.amount1}}</div>
+                    <div class="col-lg-1">{{item.amount2}}</div>
+                    <div class="col-lg-1">{{item.amount3}}</div>
+                    <div class="col-lg-2">{{item.officialPrice | currency:'VND':'' }} đ</div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-info m-2"><a class="text-decoration-none text-white" [routerLink]="['/products-edit',item.productId]"><i class="bi bi-gear-wide-connected"></i> Sửa</a></button>
+                        <button class="btn btn-danger"><a class="text-decoration-none text-white" [routerLink]="['/products-delete',item.productId]"><i class="bi bi-trash-fill"> Xóa</i></a></button>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <!-- item-product -->
+
+
+
+
+
+        </div>
+    </div>
+</div>

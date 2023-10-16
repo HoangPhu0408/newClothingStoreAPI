@@ -1,0 +1,49 @@
+<div class="container" style="padding-top: 9%;">
+    <!-- breadcumbs -->
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a href="#">quần</a></li>
+  
+      </ol>
+    </nav>
+  
+  
+    <!-- dropdown -->
+    <!-- <select ngModel="selectedOption">
+      <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+    </select>
+    <p>Selected Option: {{ selectedOption }}</p> -->
+  
+    <!-- <select ngModel="selectedOption" (change)="onSortOptionChange()">
+      <option value="default">Mặc định</option>
+      <option value="lowToHigh">Sắp xếp giá từ thấp đến cao</option>
+    </select> -->
+  
+
+
+
+    <!-- xài -->
+  <!-- <select [(ngModel)]="selectedSortOption"  (change)="onSortOptionChange()">
+    <option value="default">Mặc định</option>
+    <option value="lowToHigh">Sắp xếp giá từ thấp đến cao</option>
+    <option value="HighToLow">Sắp xếp giá từ cao đến thấp</option>
+  </select>
+  -->
+    
+    <p></p>
+    <div class="container">
+      <div class="categ-list" *ngFor="let prod of lstProd">
+        <a class="card" [routerLink]="['/product-detail', prod.productId]" style="width: 18rem;">
+          <img class="card-img-top" src="assets/h1.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ prod.productName }}</h5>
+            <p class="card-text text-decoration-line-through">{{ prod.initialPrice }} </p>
+            <p class="card-text">{{ prod.officialPrice }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  

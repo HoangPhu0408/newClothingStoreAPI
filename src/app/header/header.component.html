@@ -1,0 +1,182 @@
+<!-- <div class="nav-navbar fixed-top bg-black d-flex flex-wrap align-items-center justify-content-center p-3 mb-4">
+  <div class="col-md-3 mb-2 mb-md-0">
+    <a routerLink="/home" class="d-inline-flex text-bold text-white fs-1 font-monospace text-decoration-none">
+      SLfashion
+    </a>
+  </div>
+
+  <ul class="nav col-12 col-md-auto mb-md-0">
+    <li><a routerLink="/home" class="nav-link px-4 text-white text-uppercase fs-6">Trang chủ</a></li>
+    <div class="search">
+      <form id="searchFormTop" (ngSubmit)="SearchSubmit(f)" #f="ngForm">
+        <input type="text" ngModel name="search_string" type="search" class="searchbox" placeholder="Search..."
+          aria-label="Search">
+        <span class="search-btn-wrap">
+          <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
+        </span>
+      </form>
+    </div>
+    <li><a routerLink="/product-list" class="nav-link px-4 text-white text-uppercase fs-6">product-list</a></li>
+    <li class="nav-item dropdown">
+      <a routerLink="/category-product" class="nav-link dropdown-toggle px-4 text-white text-uppercase fs-6" role="button" data-bs-toggle="dropdown" aria-expanded="false">sản phẩm</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">GIÀY</a></li>
+          <li><a class="dropdown-item" href="#">ÁO</a></li>
+          <li><a class="dropdown-item" href="#">QUẦN</a></li>
+          <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
+          <li><a class="dropdown-item" href="#">ÁO MẶC NGOÀI</a></li>
+          <li><a class="dropdown-item" href="#">HÀNG MỚI VỀ</a></li>
+          <li><a class="dropdown-item" href="#">SẢN PHẨM BÁN CHẠY</a></li>
+        </ul>
+      </li>
+  </ul>
+  <div class="col-lg-3 text-end">
+    <a routerLink="/cart" class="px-4 text-white text-decoration-none fs-5">
+      <i class="bi bi-cart3">
+        <span class="px-1 card-count">{{totalCart}}</span>
+      </i>
+    </a>
+    <a class="dropdown-toggle text-light text-decoration-none" data-bs-toggle="dropdown">
+      <img src="https://minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg" alt="mdo" width="32"
+        height="32" class="rounded">
+      <span class="px-1 card-count">{{customerName}}</span>
+    </a>
+    <div class="dropdown-menu user-button mt-4 bg-light" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item user-item" href="#"><i class="bi bi-person-fill"></i> Tên khách hàng</a>
+      <a class="dropdown-item user-item" href="#"><i class="bi bi-receipt-cutoff"></i> Đơn hàng của bạn</a>
+      <a class="dropdown-item user-item" [routerLink]="['/favorite-list']"><i class="bi bi-heart"></i> Sản phẩm yêu
+        thích</a>
+      <a class="dropdown-item user-item" [routerLink]="['/login']"><i class="bi bi-box-arrow-right"></i>
+        Đăng nhập</a>
+    </div>
+  </div>
+</div> -->
+<header>
+  <!-- Jumbotron -->
+  <div class="p-3 text-center bg-white border-bottom">
+    <div class="container">
+      <div class="row gy-3">
+        <!-- Left elements -->
+        <div class="col-lg-2 col-sm-4 col-4">
+          <a href="https://mdbootstrap.com/" routerLink="/home" class="float-start">
+            <img src="assets/logoweb.jpg" height="56" />
+          </a>
+        </div>
+        <!-- Left elements -->
+
+        <!-- Center elements -->
+        <div class="order-lg-last col-lg-5 col-sm-8 col-8">
+          <div class="d-flex float-end pt-1">
+            <button class="me-1 border rounded py-2 px-3 nav-link d-flex align-items-center" style="font-family: Courier New, Helvetica, sans-serif;">
+              <i class="bi bi-heart-fill" [routerLink]="['/favorite-list']"><strong> Yêu thích</strong></i>
+            </button>
+            <button class="me-1 border rounded py-2 px-3 nav-link d-flex align-items-center" style="font-family: Courier New, Helvetica, sans-serif;">
+              <i class="bi bi-bag-fill"><strong>({{totalCart}})</strong></i>
+            </button>
+            <button class="border rounded py-2 px-3 nav-link d-flex align-items-center" style="font-family: Courier New, Helvetica, sans-serif;">
+              <i class="bi bi-person-square" [routerLink]="['/login']"><strong> Đăng nhập</strong></i>
+            </button>
+          </div>
+        </div>
+        <!-- Center elements -->
+
+        <!-- Right elements -->
+        <div class="col-lg-5 col-md-12 col-1">
+          <div class="input-group align-items-center">
+            <div class="form-outline">
+              <div class="search">
+                <form id="searchFormTop" (ngSubmit)="SearchSubmit(f)" #f="ngForm">
+                  <input type="text" ngModel name="search_string" type="search" class="searchbox" placeholder="Search..."
+                    aria-label="Search">
+                  <span class="search-btn-wrap">
+                    <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
+                  </span>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right elements -->
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container d-flex flex-wrap align-items-center justify-content-center">
+      <!-- Toggle button -->
+      <button class="navbar-toggler border py-2 text-dark" type="button" data-mdb-toggle="collapse"
+        data-mdb-target="#navbarLeftAlignExample" aria-controls="navbarLeftAlignExample" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="bi bi-grid-3x3-gap-fill"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+        <!-- Left links -->
+        <ul class="nav col-12 col-md-auto mb-md-0">
+          <li class="nav-item dropdown p-1">
+            <button class="btn btn-primary">
+              <a class="nav-link text-light" id="navbarDropdown" data-mdb-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-filter-left" style="font-family: Courier New, Helvetica, sans-serif; font-size: large;"> Danh mục sản phẩm</i>
+              </a>
+            </button>
+            <!-- Dropdown menu -->
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a (click)="navigateToProductList(item.categoryId)" class="dropdown-item" *ngFor="let item of cateList">{{item.categoryName}}</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" style="padding-left: 295px;">
+            
+          </li>
+          <li class="nav-item p-1">
+            <button class="btn btn-primary" style="font-size: large;">
+              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-box2-fill"></i> Sản phẩm</a>
+            </button>
+          </li>
+          <li class="nav-item p-1">
+            <button class="btn btn-primary" style="font-size: large;">
+              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-headset"></i> Liên hệ</a>
+            </button>
+          </li>
+          <li class="nav-item p-1">
+            <button class="btn btn-primary" style="font-size: large;">
+              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-newspaper"></i> Tin tức</a>
+            </button>
+          </li>
+          <li class="nav-item p-1">
+            <button class="btn btn-primary" style="font-size: large;">
+              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-person-vcard"></i> Giới thiệu</a>
+            </button>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link text-dark" href="#">Hot offers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#">Gift boxes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#">Menu item</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#">Menu name</a>
+          </li> -->
+          <!-- Navbar dropdown -->
+        </ul>
+        <!-- Left links -->
+      </div>
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+  <!-- Jumbotron -->
+  
+  <!-- Jumbotron -->
+</header>

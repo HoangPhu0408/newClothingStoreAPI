@@ -1,0 +1,193 @@
+<!-- <div class="container" style="padding-top: 9%;"> -->
+    <!-- breadcumbs -->
+
+    <!-- <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home-page">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#"></a></li>
+            <li class="breadcrumb-item"><a href="#"></a></li>
+
+        </ol>
+    </nav> -->
+    <!-- end-breadcumbs -->
+    <!-- <div class="full-detail"> -->
+        <!-- hình detail -->
+        <!-- <div class="gallery-container">
+            <div class="large-image">
+                <img [src]="currentImage" alt="Chi tiết sản phẩm">
+            </div>
+            <div class="small-images">
+                <div class="thumbnail-container"><img *ngFor="let image of thumbnailImages" [src]="image" alt="Hình nhỏ" (click)="showImage(image)"></div>
+            </div>
+            <button (click)="nextImage()">Next</button>
+        </div> -->
+
+        <!-- thông tin sp -->
+
+        <!-- <div class="prod-options" *ngIf="product"> -->
+            <!-- <h3>{{product.categoryId}}</h3> -->
+            <!-- <h3>{{product.productName}}</h3> -->
+
+            <!-- <div class="price-details"> -->
+
+                <!-- <span class="initial-price-details">{{product.intialPrice | currency:'VND':'' }} ₫ </span> -->
+                <!-- <span class="initial-price-details text-decoration-line-through"> {{product.initialPrice}}₫ </span> -->
+
+                <!-- <h5 class="price-details-product">{{product.officialPrice}} ₫ </h5> -->
+            <!-- </div> -->
+            <!-- <div class="status-product" *ngIf="isOutOfStock" > -->
+                <!-- <i class="bi bi-bag-check"></i> -->
+                <!-- <h3>Hết hàng</h3> -->
+            <!-- </div> -->
+
+            <!-- nếu hết hàng -->
+            <!-- <ng-template #SoldOutProd>
+                <div class="status-product" style="color: darkred;">
+                    <i class="bi bi-x-circle-fill"></i>
+                    Hết hàng
+                </div>
+            </ng-template> -->
+            <!-- chọn size  -->
+          
+              
+            <!-- <ul style="display: flex; list-style-type: none;">
+                <li (click)="onListItemClick(product.size1)" [value]="product.size1" role="button">{{ product.size1 }}
+                    <span *ngIf="product.amount1 === 0">Hết hàng</span>
+                </li>
+                <li (click)="onListItemClick(product.size2)" style="margin-left: 20px; margin-right: 20px;" [value]="product.size2" role="button">{{ product.size2 }}
+                    <span *ngIf="product.amount2 === 0">Hết hàng</span>
+                </li>
+                <li (click)="onListItemClick(product.size3)" [value]="product.size3" role="button">{{ product.size3 }}
+                    <span *ngIf="product.amount3 === 0">Hết hàng</span>
+
+                </li>
+              </ul> -->
+
+              <!-- <ul>
+                <li>
+                  <label>
+                    <input type="radio" name="product" [value]="product.size1" [(ngModel)]="product.size1">{{product.size1}}
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="product" value="Item 2" [(ngModel)]="selectedItem"> Item 2
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="product" value="Item 3" [(ngModel)]="selectedItem"> Item 3
+                  </label>
+                </li>
+              </ul> -->
+              
+              
+                
+        
+       
+            <!-- <select [(ngModel)]="product">
+                <option value="default">Chọn 1 một tùy chọn</option>
+                <option [value]="product.size1">S</option>
+                <option [value]="product.size2">M</option>
+                <option [value]="product.size3">L</option>
+
+
+            </select>  -->
+            
+
+
+            <!-- <div class="quantity" id="handleCounter" *ngIf="product">
+                <span style="margin-right: 20px;">Số lượng</span>
+                <button  [disabled]="isLimitReached" type="button" class="btn quantity-btn" id="counter-minus" (click)="CounterMinus()">-</button>
+                <input type="number" data-numspin [value]="countProd" id="quantity_product" min="1" disabled="disabled">
+                <button  [disabled]="isOutOfStock || isLimitReached" type="button" class="btn quantity-btn" id="counter-plus" (click)="CounterPlus()">+</button>
+            </div>
+
+
+            <button class="add-to-cart-btn" (click)="AddToCart(product)"><i style="margin-right: 10px; font-size: 22px;"
+                    class="bi bi-cart-plus"></i>Thêm vào giỏ hàng</button> -->
+
+            <!-- <ng-template #SoldOutProdBtn>
+                <button class="add-to-cart-btn sold-out-btn" disabled>
+                    <i style="margin-right: 10px; font-size: 22px;" class="bi bi-cart-x-fill"></i>Hết hàng
+                </button>
+            </ng-template> -->
+
+
+            <!-- yêu thích -->
+            <!-- <button class="love-product-btn" (click)="AddToFavorite(product)"><i class="bi bi-heart-fill"></i>yêu thích</button> -->
+        <!-- </div> -->
+    <!-- </div> -->
+<!-- </div> -->
+<!-- <app-new-prod-list></app-new-prod-list> -->
+<div class="container" style="padding-top: 9%">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 ">
+            <div class="gallery-container">
+                <div class="large-image">
+                    <img [src]="currentImage" alt="Chi tiết sản phẩm">
+                </div>
+                <div class="small-images">
+                    <div class="thumbnail-container"><img *ngFor="let image of thumbnailImages" [src]="image" alt="Hình nhỏ"
+                            (click)="showImage(image)"></div>
+                </div>
+                <!-- <button (click)="nextImage()">Next</button> -->
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="prod-options" *ngIf="product">
+                <h3>{{product.productName}}</h3>
+                <div class="price-details">
+                    <span class="initial-price-details text-decoration-line-through"> {{product.initialPrice}}₫ </span>
+                    <h5 class="price-details-product">{{product.officialPrice}} ₫ </h5>
+                </div>
+
+                <ul style="display: flex; list-style-type: none;">
+                    <li (click)="onListItemClick(product.size1)" [value]="product.size1" role="button">{{ product.size1 }}
+                        <span *ngIf="product.amount1 === 0">Hết hàng</span>
+                    </li>
+                    <li (click)="onListItemClick(product.size2)" style="margin-left: 20px; margin-right: 20px;" [value]="product.size2"
+                        role="button">{{ product.size2 }}
+                        <span *ngIf="product.amount2 === 0">Hết hàng</span>
+                    </li>
+                    <li (click)="onListItemClick(product.size3)" [value]="product.size3" role="button">{{ product.size3 }}
+                        <span *ngIf="product.amount3 === 0">Hết hàng</span>
+                
+                    </li>
+                </ul>
+
+                <div class="quantity mb-3" id="handleCounter" *ngIf="product">
+                    <span style="margin-right: 20px;">Số lượng</span>
+                    <button [disabled]="isLimitReached" type="button" class="btn quantity-btn" id="counter-minus"
+                        (click)="CounterMinus()">-</button>
+                    <input type="number" data-numspin [value]="countProd" id="quantity_product" min="1"
+                        disabled="disabled">
+                    <button [disabled]="isOutOfStock || isLimitReached" type="button" class="btn quantity-btn"
+                        id="counter-plus" (click)="CounterPlus()">+</button>
+                </div>
+
+                <button class="add-to-cart-btn"
+                    style="margin-right: px; font-size: 16px; border-radius: 5px; padding: 8px;"
+                    (click)="AddToCart(product.productId)"><i class="bi bi-cart-plus"></i> Thêm giỏ hàng</button>
+                <button class="love-product-btn" (click)="AddToFavorite(product)"
+                    style="margin-left: 8px; font-size: 16px; border-radius: 5px; padding: 8px;"><i
+                        class="bi bi-heart-fill"></i> Yêu thích</button>
+                <div class="card" style="margin-top: 24px;">
+                    <div class="card-header">
+                        Chi tiết sản phẩm
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0" style="font-size: 16px;">
+                            <p>{{ product.introduction }}</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+</div>
+
+
+

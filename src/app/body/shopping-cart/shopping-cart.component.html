@@ -1,0 +1,88 @@
+<!-- cart -->
+<div class="container" style="min-height: 550px; margin-top: 9%;">
+    <h2 style="margin-top: 20px; margin-bottom: 30px;">Giỏ hàng của bạn <i class="bi bi-cart3"></i></h2>
+
+    <h3>Chưa có sản phẩm nào trong giỏ hàng</h3>
+    <div class="row">
+
+        <div class="col-lg-8 cart">
+
+
+            <div class="cart-infor">
+                <div class="row">
+                    <div class="col-lg-4 cart-title">Sản phẩm</div>
+                    <div class="col-lg-2 cart-title">Đơn giá</div>
+                    <div class="col-lg-2 cart-title">Số lượng</div>
+                    <div class="col-lg-2 cart-title">Thành tiền</div>
+                </div>
+                <hr>
+                <div>
+                    <div class="row cart-items" *ngFor="let item of cartItem">
+                        <div class="col-lg-4">
+                            <a href="#" class="product-link-cart">
+                                <div class="product-infor-cart">
+                                    <!-- <img src="assets/h1.jpg" alt="" width="100px" height="100px"> -->
+                                    <div class="name-product-cart">{{ item.productName }} {{item.productSize}}</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <div class="unit-price-cart">{{ item.officialPrice }}</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="quantity quantity-cart" id="handleCounter" style="display: flex;">
+                                <!-- <button type="button" class="quantity-btn quantity-btn-cart"
+                                    (click)="DeCreaseQuantity(item.productID)">-</button> -->
+                                <!-- <input type="number" data-numspin [value]="item.quantity" id="quantity_product" min="1"
+                                    style="width: 45px;"> -->
+                                    {{item.quantity}}
+                                <!-- <button type="button" class="quantity-btn quantity-btn-cart"
+                                    (click)="InCreaseQuantity(item.productID)">+</button> -->
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <div class="into-money-cart"> {{finalPrice}}</div>
+
+                        </div>
+                        <div class="col-lg-1 delete-item-cart-btn">
+                            <button (click)="DeleteProduct(item.productID)"><i class="bi bi-trash"></i>Xóa</button>
+                        </div>
+                        <div>
+                            <!-- <button class="update-product-btn" type="submit"><i class="ri-edit-box-line"></i></button> -->
+                            <!-- <button class="delete-product-cart"><i class="ri-delete-bin-line"></i></button> -->
+                        </div>
+
+                    </div>
+                    <hr>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-lg-4">
+            <div class="right-cart-element">
+                <div class="count-items">
+                    <span>Số lượng sản phẩm </span>
+                    <span style="float: right;">{{quantityCart}}</span>
+                </div>
+                <hr>
+                <div class="price-total">
+                    <span>Tổng tiền</span>
+                    <span class="total-price-cart">{{finalPrice | currency:'VND':'' }} ₫</span>
+                </div>
+                <form action="" method="post" class="form-order">
+                    <input type="submit" value="Đặt hàng" (click)="onPayment()" class="btn order-button">
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- </ng-template> -->
+</div>
+<!-- end-cart -->

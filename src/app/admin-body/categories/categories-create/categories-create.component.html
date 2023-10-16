@@ -1,0 +1,21 @@
+<form #f="ngForm">
+    <div class="detail-admin ">
+        <div class="projects">
+            <div class="card-body">
+
+                <span>Tên danh mục</span>
+                <input type="text" ngModel name="CategoryName" placeholder="Tên danh mục" class="form-control"
+                    style="height: 40px; padding-left: 5px;" /><br>
+
+                <input type="text" ngModel name="CreatedDate" placeholder="Ngày tạo" class="form-control"
+                    style="height: 40px; padding-left: 5px;" /><br>
+
+                </div>
+              
+                <span style="color: red;"></span>
+                <button (click)="CreateCate(f)" type="submit" class="btn btn-success"
+                    style="width:100%;margin-top: 20px; height: 35px;">Lưu</button>
+                <!-- <button  class="btn btn-danger" style="width: 29%; margin-left: 5px; height: 35px;">Xóa</button> -->
+            </div>
+        </div>
+</form>

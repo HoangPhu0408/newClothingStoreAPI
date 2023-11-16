@@ -7,19 +7,19 @@ import { Products } from '../model/product.model';
 import { Customer } from '../model/customer.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FavoriteProductService {
   favoriteItem: FavoriteProduct[] = [];
   private apiUrl = 'https://localhost:7069/api/FavoriteProduct'; // Đường dẫn đến API
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getFavoritesByUserId(userId: number): Observable<FavoriteProduct[]> {
     const url = `${this.apiUrl}/user/${userId}`;
     return this.http.get<FavoriteProduct[]>(url);
   }
-  getFavoriteItem(userId :number): FavoriteProduct[]{
+  getFavoriteItem(userId: number): FavoriteProduct[] {
     return this.favoriteItem;
   }
 
@@ -27,7 +27,7 @@ export class FavoriteProductService {
     // const product = this.favoriteItem.find(
     //   item => item.ProductId == prod.productId);
     // const uId = this.favoriteItem.find(item => item.CustomerId == userId.userId);
-    return this.http.post<any>(this.apiUrl,data)
+    return this.http.post<any>(this.apiUrl, data);
   }
 
   removeFromFavorites(favoriteId: number): Observable<any> {

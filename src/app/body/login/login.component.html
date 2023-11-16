@@ -1,21 +1,24 @@
 <!-- <app-header></app-header> -->
-<div class="container login-modal">
+<div class="container login-modal" style="margin-top: 180px;">
     <div class="login-box">
-        <div class="login-content" style="float: right;">
-            <img style="width: 400px; height: 400px; margin-right: 80px;" src="assets/img_login.png" alt="">
-        </div>
         <div class="login-content" style="width: 450px; height: 400px; ">
             <div style="padding-top: 56px;">
                 <h3>Xin chào !</h3>
                 <p class="text-secondary">Tạo một tài khoản để nhận được những ưu đãi tốt nhất từ chúng tôi</p>
                 <form #form="ngForm" (ngSubmit)="onLogIn(form)">
                     <div class="form-group mb-3">
-                        <input ngModel name="userName" type="text" id="username" class="form-control"
-                            aria-describedby="emailHelp" placeholder="Tài khoản" required>
+                        <input name="phone" ngModel name="phonenumber" type="text" id="phonenumber" class="form-control"
+                            aria-describedby="emailHelp" placeholder="Số điện thoại (+84)" required>
+                        <div class="text-danger" *ngIf="showError && phone.length < 8">
+                            Mật khẩu phải có ít nhất 8 ký tự.
+                        </div>
                     </div>
                     <div class="form-group mb-3">
-                        <input ngModel name="password" type="password" class="form-control" id="password"
+                        <input name="pass" ngModel name="password" type="password" class="form-control" id="password"
                             placeholder="Mật khẩu" required>
+                        <div class="text-danger" *ngIf="showError && pass.length < 8">
+                            Mật khẩu phải có ít nhất 8 ký tự.
+                        </div>
                     </div>
                     <div *ngIf="errorMessage" style="color: red; margin: 10px 0;"> {{errorMessage}} </div>
 
@@ -29,4 +32,3 @@
         </div>
     </div>
 </div>
-

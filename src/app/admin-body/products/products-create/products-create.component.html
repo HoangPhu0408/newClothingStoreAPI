@@ -1,19 +1,19 @@
 <form #f="ngForm">
     <div class="checkbox-img">
         <div class="box-img-admin">
-            <img id="blah" [src]="" alt="" width="80px" height="80px" /><br><br>
-            <input required name="image1Url" class="form-control" id="imgInp" style="width: 80px;" />
+            <img id="blah" width="80px" height="80px" /><br><br>
+            <input required ngModel name="image1Url" class="form-control" id="imgInp" style="width: 80px;" />
             <label for="imgInp">URL Ảnh 1</label>
         </div>
         <div class="box-img-admin">
-            <img id="blah" [src]="" alt="" width="80px" height="80px" /><br><br>
-            <input required="" name="image2Url" class="form-control" id="imgInp" style="width: 80px;" />
+            <img id="blah" width="80px" height="80px" /><br><br>
+            <input required ngModel name="image2Url" class="form-control" id="imgInp" style="width: 80px;" />
             <label for="imgInp">URL Ảnh 2</label>
 
         </div>
         <div class="box-img-admin">
-            <img id="blah" [src]="" alt="" width="80px" height="80px" /><br><br>
-            <input required name="image3Url" class="form-control" id="imgInp" style="width: 80px;" />
+            <img id="blah" width="80px" height="80px" /><br><br>
+            <input required ngModel name="image3Url" class="form-control" id="imgInp" style="width: 80px;" />
             <label for="imgInp">URL Ảnh 3</label>
 
         </div>
@@ -25,12 +25,12 @@
             <div class="card-body">
 
                 <span>Tên sản phẩm</span>
-                <input type="text" ngModel name="ProductName" placeholder="Tên sản phẩm" class="form-control"
+                <input type="text" ngModel name="productName" placeholder="Tên sản phẩm" class="form-control"
                     style="height: 40px; padding-left: 5px;" /><br>
 
-                <input type="text" ngModel name="CreatedDate" placeholder="Ngày tạo" class="form-control"
-                    style="height: 40px; padding-left: 5px;" /><br>
-
+                <label class="form-control" type="text" aria-label="Disabled input example" disabled readonly>{{
+                    currentDate | date : "hh:mm:ss" }}
+                    {{ currentDate | date : "fullDate" }}</label><br>
                 <div class="form-check">
                     <!-- checkbox size -->
                     <input ngModel name="selectedSize1" (click)=" onSizeSClick(selectedSizeS)" class="form-check-input"
@@ -58,7 +58,7 @@
                     </label>
                     <input *ngIf="stateSizeL" ngModel name="Amount3" placeholder="Nhập số lượng Size L">
                 </div>
-         
+
 
                 <span>Giá</span>
                 <input ngModel type="number" id="text" name="initialPrice" style="height: 40px; padding-left: 5px;"

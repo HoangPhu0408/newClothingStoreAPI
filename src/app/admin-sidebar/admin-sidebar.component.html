@@ -87,71 +87,68 @@
         <canvas class="my-4 w-100" id="myChart" style="display: block; box-sizing: border-box; height: 338px; width: 800px;"></canvas>
     </main>
 </div> -->
-<div class="d-flex">
-    <div class="d-flex flex-nowrap" style="height: 100vh; position: fixed;">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-2">Admin</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a routerLink="products" class="nav-link active" aria-current="page">
-                        <i class="bi bi-house-fill p-2"></i>
-                        Quản lý sản phẩm
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="categories" href="#" class="nav-link text-white">
-                        <i class="bi bi-speedometer p-2"></i>
-                        Quản lý danh mục
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-file-earmark p-2"></i>
-                        Orders
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/products" class="nav-link text-white">
-                        <i class="bi bi-bag-fill p-2"></i>
-                        Products
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-person-fill-gear p-2"></i>
-                        Customers
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-incognito p-3"></i>
-                    <strong>Admin</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
+<div class="row d-flex">
+  <div class="col-lg-2 d-flex flex-nowrap" style="height: 100vh; position: fixed">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-2">Admin</span>
+      </a>
+      <hr />
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a routerLink="products" class="nav-link active" aria-current="page">
+            <i class="bi bi-bag-fill p-2"></i>
+            Quản lý sản phẩm
+          </a>
+        </li>
+        <li>
+          <a routerLink="categories" href="#" class="nav-link text-white">
+            <i class="bi bi-tags-fill p-2"></i>
+            Quản lý danh mục
+          </a>
+        </li>
+        <li>
+          <a routerLink="orders" class="nav-link text-white">
+            <i class="bi bi-file-earmark p-2"></i>
+            Quản lý đơn hàng
+          </a>
+        </li>
+        <li>
+          <a routerLink="report" class="nav-link text-white">
+            <i class="bi bi-graph-up p-2"></i>
+            Thống kê - Báo cáo
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-white">
+            <i class="bi bi-person-fill-gear p-2"></i>
+            Quản lý người dùng
+          </a>
+        </li>
+      </ul>
+      <hr />
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-incognito p-3"></i>
+          <strong>Admin</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
     </div>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-6" style="padding-left: 2%;">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1>Trang quản lý</h1>
-        </div>
-        <div class="">
-            <router-outlet></router-outlet>
-            <!-- <app-products></app-products> -->
-        </div>
-    </main>
+  </div>
+  <div class="col-md-9 ms-sm-auto col-lg-10 px-md-6">
+    <div class="fixed-end ms-5">
+      <router-outlet></router-outlet>
+      <!-- <app-products></app-products> -->
+    </div>
+  </div>
 </div>

@@ -32,9 +32,11 @@
                 <input type="text" [(ngModel)]="product.productName" name="productName" [value]="product.productName"
                     class="form-control" style="height: 40px; padding-left: 5px;" /><br>
 
-                <span>Ngày tạo</span>
-                <input type="text" ngModel name="CreatedDate" placeholder="Ngày tạo" class="form-control"
-                    style="height: 40px; padding-left: 5px;" /><br>
+                <span>Ngày chỉnh sửa</span>
+                <label class="form-control" ngModel name="CreatedDate" type="text" aria-label="Disabled input example"
+                    disabled readonly>{{
+                    currentDate | date : "hh:mm:ss" }}
+                    {{ currentDate | date : "fullDate" }}</label><br>
 
                 <label>Số lượng:</label>
                 <input type="number" [(ngModel)]="product.amount1" name="amount1" [value]="product.amount1"
@@ -48,14 +50,14 @@
                     style="width:100px; height: 40px; padding-left: 5px;"><br>
 
                 <span>Giá gốc</span>
-                <input type="number" [(ngModel)]="product.initialPrice" name="initialPrice" [value]="product.initialPrice"
-                    style="height: 40px; padding-left: 5px;" class="form-control" size="30"
-                    placeholder="Giá sản phẩm" />
+                <input type="number" [(ngModel)]="product.initialPrice" name="initialPrice"
+                    [value]="product.initialPrice" style="height: 40px; padding-left: 5px;" class="form-control"
+                    size="30" placeholder="Giá sản phẩm" />
 
                 <span>Giá chính thức</span>
-                <input type="number" [(ngModel)]="product.officialPrice" name="officialPrice" [value]="product.officialPrice"
-                 class="form-control"
-                    placeholder="Giá chính thức" style="height: 40px; padding-left: 5px;" /><br>
+                <input type="number" [(ngModel)]="product.officialPrice" name="officialPrice"
+                    [value]="product.officialPrice" class="form-control" placeholder="Giá chính thức"
+                    style="height: 40px; padding-left: 5px;" /><br>
 
 
 

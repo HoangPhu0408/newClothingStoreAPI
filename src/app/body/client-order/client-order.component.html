@@ -1,0 +1,44 @@
+<div class="container bg-white border d-flex flex-wrap align-items-center" style="margin-top: 180px;" id="container">
+  <div class="col-lg-12 col-md-6">
+    <div class="d-flex m-4 align-items-center">
+      <span class="bg-light d-flex me-5 mb-2" style="height: 64px; width: 64px">
+        <img src="assets/default_avatar.jpg" />
+      </span>
+      <div class="info">
+        <h5>Tên người nhận: {{client.userName}}</h5>
+        <h6>Số điện thoại: (+84) {{client.phoneNumber}}</h6>
+      </div>
+    </div>
+    <hr />
+    <h4 class="mt-3">Đơn hàng của bạn</h4>
+    <div class="container bg-light border d-flex flex-wrap justify-content-center align-items-center mt-4 mb-4"
+      style="border-radius: 8px" *ngFor="let item of orders">
+      <div class="row col-12 mt-3 mb-2 align-items-center">
+        <div class="col-lg-10 col-md-4">
+          <h5>Tên người dùng: {{ item.userId }}</h5>
+          <!-- <div class="h6">
+            <h6 class="text-success" *ngIf="item.orderStatus == 1">
+              Trạng thái đơn hàng: Đang vận chuyển
+            </h6>
+            <h6 class="text-warning" *ngIf="item.orderStatus == 0">
+              Trạng thái đơn hàng: Đang chờ xác nhận
+            </h6>
+            <h6 class="text-danger" *ngIf="item.orderStatus == 2">
+              Trạng thái đơn hàng: Đã hủy
+            </h6>
+          </div> -->
+          <h6>
+            Thời điểm đặt hàng: {{ item.orderDate | date : "hh:mm:ss" }}
+            {{ item.orderDate | date : "fullDate" }}
+          </h6>
+          <h6>Địa chỉ nhận hàng: {{ item.orderAddress }}</h6>
+        </div>
+        <div class="col-lg-2 col-md-2">
+          <button class="btn btn-info" [routerLink]="['/client-order-details', item.orderId]">
+            <i class="bi bi-file-text"></i> Xem chi tiết
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

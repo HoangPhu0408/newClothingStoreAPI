@@ -7,44 +7,67 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  name: string = ''
-  errorMessage: string = ''
+  phonenumber: string = '';
+  errorMessage: string = '';
+  name: string = '';
+  pass: string = ''
+  phone: string = ''
 
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private http: HttpClient
+  ) { }
+  showError: boolean = false;
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private http: HttpClient) { }
   ngOnInit(): void {
     this.authenticationService.LogOut();
   }
   onLogIn(form: NgForm) {
     const customer = {
-      userName: form.value.userName.toString().trim(),
-      password: form.value.password.toString().trim()
-    }
+      phonenumber: form.value.phonenumber.toString().trim(),
+      password: form.value.password.toString().trim(),
+    };
 
-    this.authenticationService.Login(customer).subscribe(
-      (response) => {
+    if (customer.password.length < 8 || customer.phonenumber < 10) {
+      this.showError = true;
+      console.log("d dc")
+      console.log(customer.password.length)
+      console.log(customer.phonenumber.length)
+      // console.log(this.phone)
+      return
+    } else {
+
+      this.authenticationService.Login(customer).subscribe((response) => {
         if (response.message == 'Admin Status Success!') {
-          this.router.navigate(['admin-sidebar'])
-          this.name = response.userName;
+          this.router.navigate(['products']);
+          this.phonenumber = response.userName;
           this.authenticationService.customerInfo = response;
-          this.authenticationService.customerLoginState = true;
-          this.authenticationService.customerStated.emit(this.authenticationService.customerLoginState);
-          this.authenticationService.userLogin = this.name;
-          this.authenticationService.userLoginEmitter.emit(this.authenticationService.userLogin);
+          this.authenticationService.adminLoginState = true;
+          this.authenticationService.adminStated.emit(
+            this.authenticationService.adminLoginState
+          );
+          this.authenticationService.userLogin = this.phonenumber;
+          this.authenticationService.userLoginEmitter.emit(
+            this.authenticationService.userLogin
+          );
         } else {
-          this.router.navigate(['home'])
-          this.name = response.userName;
+          this.router.navigate(['home']);
+          this.phonenumber = response.phoneNumber;
           this.authenticationService.customerInfo = response;
           this.authenticationService.customerLoginState = true;
-          this.authenticationService.customerStated.emit(this.authenticationService.customerLoginState);
-          this.authenticationService.userLogin = this.name;
-          this.authenticationService.userLoginEmitter.emit(this.authenticationService.userLogin);
+          this.authenticationService.customerStated.emit(
+            this.authenticationService.customerLoginState
+          );
+          this.authenticationService.userLogin = this.phonenumber;
+          this.authenticationService.userLoginEmitter.emit(
+            this.authenticationService.userLogin
+          );
         }
-      }
-    )
+      });
+    }
   }
-
 }

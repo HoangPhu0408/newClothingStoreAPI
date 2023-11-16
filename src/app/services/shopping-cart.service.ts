@@ -6,15 +6,15 @@ import { Products } from '../model/product.model';
 import { CartItem } from '../model/cart-item.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ShoppingCartService {
   cartItem: CartItem[] = [];
   cartQuantityChanged: EventEmitter<number> = new EventEmitter<number>();
-  selectedProduct: any
+  selectedProduct: any;
   private apiUrl = 'https://localhost:7069/api/OrderDetails';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private prod:ProductService) {}
   // getbla() {
   //   return this.cartItem.length
   // }
@@ -24,7 +24,7 @@ export class ShoppingCartService {
   }
 
   PlusQuantity(prodID: number) {
-    const cartItem = this.cartItem.find(item => item.productID == prodID);
+    const cartItem = this.cartItem.find((item) => item.productID == prodID);
     if (cartItem) {
       cartItem.quantity++;
       this.cartQuantityChanged.emit(this.getQuantity());
@@ -32,19 +32,19 @@ export class ShoppingCartService {
   }
 
   MinusQuantity(prodID: number) {
-    const cartItem = this.cartItem.find(item => item.productID == prodID);
+    const cartItem = this.cartItem.find((item) => item.productID == prodID);
     if (cartItem) {
       cartItem.quantity--;
       if (cartItem.quantity < 1) {
         cartItem.quantity = 1;
-      };
+      }
       this.cartQuantityChanged.emit(this.getQuantity());
     }
   }
 
   getPrice(): number {
     var finalPrice = 0;
-    this.cartItem.forEach(element => {
+    this.cartItem.forEach((element) => {
       finalPrice += element.FinalPrice();
     });
     return finalPrice;
@@ -52,7 +52,7 @@ export class ShoppingCartService {
 
   getQuantity(): number {
     var total = 0;
-    this.cartItem.forEach(element => {
+    this.cartItem.forEach((element) => {
       total += element.quantity;
     });
     return total;
@@ -61,10 +61,11 @@ export class ShoppingCartService {
 
   addToCart(prod: Products, quantity: number, size: string) {
     const product = this.cartItem.find(
-      item => item.productID == prod.productId && item.productSize == size);
+      (item) => item.productID == prod.productId && item.productSize == size
+    );
     if (product == null) {
       if (size == prod.size1 && quantity > prod.amount1) {
-        alert("vượt giói hạn")
+        alert('vượt giói hạn');
       }
       this.cartItem.push(new CartItem(prod, quantity, size));
     } else {
@@ -81,27 +82,28 @@ export class ShoppingCartService {
   //     return false; // Sản phẩm không đủ số lượng
   //   }
   // }
-  // updateProductQuantity(productId: number, quantity: number): void {
-  //   const product = this.productService.getProductByIdAPI(productId); // Lấy thông tin sản phẩm từ cơ sở dữ liệu
-  //   if (product) {
-  //     product.quantity -= quantity; // Giảm số lượng sản phẩm sau khi đặt hàng
-  //     // Gọi API hoặc cách nào đó để cập nhật số lượng sản phẩm trong cơ sở dữ liệu
-  //   }
-  // }
   PayMent(order: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json', // Đặt Content-Type là JSON
       }),
     };
-    return this.http.post<any>('https://localhost:7069/api/OrderDetails', order);
-
+    return this.http.post<any>(
+      'https://localhost:7069/api/OrderDetails',
+      order
+    );
   }
+  // updateProductQuantity(productId: number, quantity: number): void {
+  //   const product = this.prod.getProductIdAPI(productId); // Lấy thông tin sản phẩm từ cơ sở dữ liệu
+  //   quantity = this.cartItem.
+  //   for (let index = 0; index <= quantityProd.length; index++) {
+  //     cc.quantityProd[index] -= this.cartItem.quantity;
+  //   }
+  // }
 
-
-  DeleteProdCart(prodID: number) {
-    // var prod = this.cartItem.find((item) => item.productID == prodID);       
-    this.cartItem = this.cartItem.filter(item => item.productID != prodID);
+  DeleteProdCart(prodID: number, size: string) {
+    // var prod = this.cartItem.find((item) => item.productID == prodID);
+    this.cartItem = this.cartItem.filter((item) => !(item.productID === prodID && item.productSize === size));
     this.cartQuantityChanged.emit(this.getQuantity());
   }
 
@@ -110,14 +112,16 @@ export class ShoppingCartService {
     this.cartQuantityChanged.emit(this.getQuantity());
   }
 
+  PostOrder(order: any) {
+    return this.http.post<any>('https://localhost:7069/api/Orders', order);
+  }
 
-  // PostOrder(order: any[]) {
-  //   return this.http.post<any>('https://localhost:7079/api/Orders', order)
-  // }
-
-  // PostOrderDetails(orderDetails: any) {
-  //   return this.http.post<any>('https://localhost:7069/api/OrderDetails', orderDetails)
-  // }
+  PostOrderDetails(orderDetails: any) {
+    return this.http.post<any>(
+      'https://localhost:7069/api/OrderDetails',
+      orderDetails
+    );
+  }
   getOrderedProducts(): any[] {
     const orderedProducts: any[] = [];
     for (const item of this.cartItem) {
@@ -127,7 +131,6 @@ export class ShoppingCartService {
           orderedItem.productID === item.productID &&
           orderedItem.productSize === item.productSize
       );
-
       if (existingProduct) {
         // Nếu sản phẩm đã tồn tại, cập nhật số lượng
         existingProduct.quantity += item.quantity;

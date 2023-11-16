@@ -1,0 +1,40 @@
+<h2>Danh sách đơn hàng</h2>
+
+<p>
+  <a class="btn btn-success" routerLink="/products-create">Thêm sản phẩm</a>
+</p>
+<div>
+  <div>
+    <div>
+      <div class="row" style="font-weight: bold">
+        <div class="col-lg-2">Mã đơn hàng</div>
+        <div class="col-lg-3">Mã khách hàng</div>
+        <div class="col-lg-1">Địa chỉ</div>
+        <div class="col-lg-1">Trạng thái đơn hàng</div>
+      </div>
+      <hr />
+    </div>
+    <div class="product-list-items">
+      <!-- item-product -->
+      <div *ngFor="let item of orders">
+        <div class="row" style="align-items: center">
+          <div class="col-lg-2">{{ item.orderId }}</div>
+          <div class="col-lg-3">{{ item.userId }}</div>
+          <div class="col-lg-1">{{ item.orderAddress }}</div>
+          <div class="col-lg-1">{{ item.orderStatus }}</div>
+          <!-- <div class="col-lg-2">{{item | currency:'VND':'' }} đ</div> -->
+          <div class="col-lg-2">
+            <button class="btn btn-info m-2">
+              <a class="text-decoration-none text-white" [routerLink]="['/orders-detail', item.orderId]"><i
+                  class="bi bi-gear-wide-connected"></i> Xem chi tiết đơn
+                hàng</a>
+            </button>
+            <!-- <button class="btn btn-danger"><a class="text-decoration-none text-white" [routerLink]="['/products-delete']"><i class="bi bi-trash-fill"> Xóa</i></a></button> -->
+          </div>
+        </div>
+        <hr />
+      </div>
+      <!-- item-product -->
+    </div>
+  </div>
+</div>

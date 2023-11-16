@@ -11,33 +11,45 @@
     </div>
 </div> -->
 <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let prod of products">
-        <div class="card w-100 my-2 shadow-2-strong">
-            <img src={{prod.imgPath1}} class="card-img-top" style="width: auto;height: 100%;" />
-            <div class="card-body d-flex flex-column align-items-center">
-                <div class="d-flex flex-row">
-                    <h5 class="mb-1 me-1">{{prod.productName}}</h5>
-                </div>
-                <div class="d-flex flex-row">
-                    <span class="text-danger"><s>{{prod.initialPrice}} VNĐ</s></span>
-                </div>
-                <div class="d-flex flex-row">
-                    <h5 class="mb-1 me-1">{{prod.officialPrice}} VNĐ</h5>
+  <div class="block-filter">
+    <select class="form-select" style="width: 30%" (change)="handleFilter($event)">
+      <option value="">Lọc</option>
+      <option value="price_asc">Sắp xếp theo giá tăng dần</option>
+      <option value="price_desc">Sắp xếp theo giá giảm dần</option>
+      <option value="100000-300000">Giá 100.000 VNĐ - 300.000 VNĐ</option>
+      <option value="300000-500000">Giá 300.000 VNĐ - 500.000 VNĐ</option>
+      <option value="500000-700000">Giá 500.000 VNĐ - 700.000 VNĐ</option>
+      <option value="700000-900000">Giá 700.000 VNĐ - 900.000 VNĐ</option>
+    </select>
+  </div>
+</div>
 
-                </div>
-                <!-- <p class="card-text">{{prod.introduction}}</p> -->
-                <div class="">
-                    <a [routerLink]="['/product-detail', prod.productId]" class="btn btn-primary shadow-0 me-1">Xem chi
-                        tiết</a>
-                    <!-- <button class="love-product-btn" (click)="AddToFavorite(product)"><i class="bi bi-heart-fill"></i>yêu thích</button> -->
-
-                    <!-- <a href="#!" class="btn btn-light border icon-hover px-2 pt-1"><i class="bi bi-heart-fill"></i></a> -->
-                </div>
-            </div>
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let prod of products">
+    <div class="card w-100 my-2 shadow-2-strong" id="card">
+      <img src="{{ prod.imgPath1 }}" class="card-img-top" style="height: 100%" />
+      <div class="card-body d-flex flex-column align-items-center">
+        <div class="d-flex flex-row">
+          <h5 class="mb-1 me-1">{{ prod.productName }}</h5>
         </div>
+        <div class="d-flex flex-row">
+          <span class="text-danger"><s>{{ prod.initialPrice | currency : "VND" : ""}} VNĐ</s></span>
+        </div>
+        <div class="d-flex flex-row">
+          <h5 class="mb-1 me-1">{{ prod.officialPrice | currency : "VND" : ""}} VNĐ</h5>
+        </div>
+        <!-- <p class="card-text">{{prod.introduction}}</p> -->
+        <div class="">
+          <a [routerLink]="['/product-detail', prod.productId]" class="btn btn-primary shadow-0 me-1">Xem chi tiết</a>
+          <!-- <button class="love-product-btn" (click)="AddToFavorite(product)"><i class="bi bi-heart-fill"></i>yêu thích</button> -->
+
+          <!-- <a href="#!" class="btn btn-light border icon-hover px-2 pt-1"><i class="bi bi-heart-fill"></i></a> -->
+        </div>
+      </div>
     </div>
-    <!--  -->
-    <!-- <section style="background-color: #eee;">
+  </div>
+  <!--  -->
+  <!-- <section style="background-color: #eee;">
         <div class="container py-5" *ngFor="let prod of products">
             <div class="row">
                 <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
@@ -58,8 +70,8 @@
 
     </section> -->
 
-    <!--  -->
-    <!-- <div class="container">
+  <!--  -->
+  <!-- <div class="container">
     <div class="categ-list" *ngFor="let prod of products">
         <a class="card" [routerLink]="['/product-detail', prod.productId]" style="width: 18rem;">
             <img class="card-img-top" style="" src="assets/h1.jpg" alt="Card image cap">
@@ -74,3 +86,4 @@
         </form>
     </div>
 </div> -->
+</div>

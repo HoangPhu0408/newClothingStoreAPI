@@ -1,0 +1,36 @@
+<div class="container d-flex flex-wrap align-items-center justify-content-center" style="margin-top: 180px">
+  <p><strong style="font-size: 32px">Thông tin người dùng</strong></p>
+  <form (ngSubmit)="EditInfo()" class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Tên người dùng</label>
+      <input type="text" name="user" [(ngModel)]="client.userName" [value]="client.userName" class="form-control" />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Số điện thoại</label>
+      <input type="text" name="phonenumber" [(ngModel)]="client.phoneNumber" [value]="client.phoneNumber"
+        class="form-control" />
+    </div>
+    <div class="col-12">
+      <label class="form-label">Mật khẩu mới </label>
+      <input type="text" name="password" [(ngModel)]="client.password" [value]="client.password" class="form-control" />
+    </div>
+    <div class="col-md-12">
+      <label class="form-label">Xác nhận mật khẩu mới</label>
+      <input name="password" type="text" class="form-control" [(ngModel)]="client.password" [value]="client.password" />
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" (change)="(isChecked)"
+          (change)="handleCheckboxChange($event)" />
+        <label class="form-check-label">
+          Tôi đồng ý với việc cập nhật mới thông tin tài khoản
+        </label>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-warning" [disabled]="!isChecked">
+        Cập nhật thông tin
+      </button>
+    </div>
+  </form>
+</div>

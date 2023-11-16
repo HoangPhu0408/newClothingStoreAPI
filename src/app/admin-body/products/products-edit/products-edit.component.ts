@@ -8,19 +8,19 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './products-edit.component.html',
   styleUrls: ['./products-edit.component.css']
 })
-export class ProductsEditComponent implements OnInit{
+export class ProductsEditComponent implements OnInit {
   product: any;
 
-  image1Url: string = ""
-  image2Url: string = ""
-  image3Url: string = ""
-
+  image1Url: string = "";
+  image2Url: string = "";
+  image3Url: string = "";
+  currentDate: any;
   cateProd: any;
   // categorySelected :string;
   cateLst: Categories[] = [];
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
-
+    this.currentDate = new Date();
     this.route.params.subscribe(() => {
       var productID = Number(this.route.snapshot.paramMap.get('id'));
       // alert(productID)

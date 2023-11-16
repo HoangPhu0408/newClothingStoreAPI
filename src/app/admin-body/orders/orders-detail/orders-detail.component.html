@@ -1,0 +1,152 @@
+<h2 style="margin-top: 20px;"><i class="bi bi-receipt-cutoff"></i> Chi tiết đơn hàng </h2>
+<!-- <h1>Order Details for Order ID {{ orderDetailId }}</h1> -->
+<h1 *ngIf="order">Order Details for Order ID {{ order.orderId }}</h1>
+<!-- order-detail.component.html -->
+<!-- <div *ngFor="let item of orderDetail">
+    <h2>Chi tiết đơn hàng #{{ orderDetail.orderId }}</h2>
+    <p>Tên khách hàng: {{ orderDetail.size }}</p>
+</div> -->
+<div class="row">
+    <div class="col-lg-8 cart">
+    </div>
+</div>
+<br>
+<div class="card-bill">
+    <div class="product border-bottom table-responsive">
+        <table class="table table-borderless">
+            <tr>
+                <th>STT</th>
+                <th>Sản phẩm</th>
+                <th style="text-align:center">Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+            <!--product-1-->
+            <tr class="cart-item" *ngFor="let item of orderDetail; let i = index">
+                <td>{{i + 1}}</td>
+                <td>
+                    <a href="#">
+                        <div class="product-infor-cart">
+                            <!-- <img src="assets/h1.jpg" alt="" style="width: 50px;"> -->
+                            <img [src]="productList[i].imgPath1" alt="" style="width: 112px" />
+                            <div class="name-product-cart">
+                                {{productList[i].productName}}
+                            </div>
+                        </div>
+                    </a>
+                </td>
+                <td style="text-align:center">{{item.quantity}}</td>
+                <td>
+                    <div class="into-money-cart">{{item.price | currency : "VND" : ""}} VNĐ</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <div class="row d-flex order-infor">
+            <div class="col-md-6">
+                <table class="table table-borderless">
+                    <tbody class="totals-bill">
+                        <tr>
+                            <td>
+                                <div class="text-left"> <span class="text-muted">Tên khách hàng</span> </div>
+                            </td>
+                            <td>
+                                <div class="text-right"> <span>{{username}}</span> </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text-left"> <span class="text-muted">Số điện thoại</span> </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span> {{userphone}}</span> </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text-left"> <span class="text-muted">Ngày đặt </span> </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span>{{ orderdate | date : "hh:mm:ss" }} {{ orderdate | date :
+                                        "fullDate" }}</span> </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="text-left"> <span class="text-muted">Địa chỉ giao hàng </span> </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span> {{orderad}}</span> </div>
+
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+                <a href="#">Quay lại</a>
+            </div>
+
+            <div class="col-md-6">
+                <table class="table table-borderless">
+                    <tbody class="totals-bill">
+
+                        <tr>
+                            <td>
+                                <div class="text-left"> <span class="text-muted">Phí vận chuyển</span> </div>
+                            </td>
+                            <td>
+                                <div class="text-right"> <span>0 VNĐ</span> </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="text-left"> <span class="text-muted">Thuế: </span> </div>
+                            </td>
+                            <td>
+                                <div class="text-right"> <span class="text-success">+ 10%</span> </div>
+                            </td>
+                        </tr>
+                        <tr class="border-top border-bottom">
+                            <td>
+                                <div class="text-left"> <span class="font-weight-bold">Tổng tiền</span> </div>
+                            </td>
+                            <td>
+                                <span>{{ orderprice | currency : "VND" : ""}} VNĐ</span>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+                <div class="order-action">
+                    <!-- <button (click)="confirmOrder(orderId)">Xác nhận</button>
+                    <button (click)="cancelOrder(orderId)">Hủy Xác nhận</button>
+                    <button (click)="test(orderId)">thử</button> -->
+
+                    <button class="btn btn-success" (click)="confirmOrder(orderId)" *ngIf="order.orderStatus == 0">Xác
+                        nhận đơn hàng</button>
+                    <!-- <button class="btn btn-danger" (click)="cancelOrder(orderId)" *ngIf="order.orderStatus == 0">Hủy
+                        đơn hàng</button> -->
+
+                    <button class="btn btn-success" *ngIf="order.orderStatus == 1" disabled>Đã xác nhận</button>
+                    <button class="btn btn-warning" *ngIf="order.orderStatus == 2" disabled>Đã hủy</button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

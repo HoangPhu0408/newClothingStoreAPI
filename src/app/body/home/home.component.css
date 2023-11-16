@@ -1,0 +1,37 @@
+.container {
+    z-index: 0;
+    margin-top: 180px;
+}
+
+.carousel-inner {
+    border-radius: 30px;
+    width: 100%;
+    max-width: 1400px;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #241f1f;
+    /* Điều chỉnh kích thước tùy theo yêu cầu */
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    display: block;
+}
+
+#container-fluid-brand {
+    background-color: #f6d365;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Căn ngang hình ảnh */
+    align-items: center;
+}
+
+#card {
+    box-shadow: 0px 6px 11px -5px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 6px 11px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 6px 11px -5px rgba(0, 0, 0, 0.75);
+}

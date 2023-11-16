@@ -10,8 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CategoriesCreateComponent implements OnInit {
   notification = ""
+  currentDate: any;
   constructor(private productService: ProductService, private router: Router) { }
   ngOnInit(): void {
+    this.currentDate = new Date();
     // this.productService.getCategoryListAPI().subscribe(cate => this.cateLst = cate)
   }
   CreateCate(f: NgForm) {
@@ -21,13 +23,13 @@ export class CategoriesCreateComponent implements OnInit {
 
       const dataProd = {
         CategoryName: f.value.CategoryName,
-        createdDate: f.value.CreatedDate,
+        createdDate: this.currentDate,
       }
       console.log(dataProd)
 
       this.productService.postCategory(dataProd).subscribe()
       alert('Thêm danh mục thành công')
-    
+
 
       this.router.navigate(['/products']);
     }

@@ -1,0 +1,247 @@
+<!-- <h2 style="margin-top: 20px">
+    <i class="bi bi-receipt-cutoff"></i> Chi tiết đơn hàng
+</h2>
+<h1 *ngIf="order">Order Details for Order ID {{ order.orderId }}</h1>
+<div class="row">
+    <div class="col-lg-8 cart"></div>
+</div>
+<br />
+<div class="card-bill">
+    <div class="product border-bottom table-responsive">
+        <table class="table table-borderless">
+            <tr>
+                <th>STT</th>
+                <th>Sản phẩm</th>
+                <th style="text-align: center">Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+            <tr class="cart-item" *ngFor="let item of orderDetail; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                    <a href="#">
+                        <div class="product-infor-cart">
+                            <img [src]="productList[i].imgPath1" alt="" style="width: 50px" />
+                            <div class="name-product-cart">
+                                {{ productList[i].productName }}
+                            </div>
+                        </div>
+                    </a>
+                </td>
+                <td style="text-align: center">{{ item.quantity }}</td>
+                <td>
+                    <div class="into-money-cart">{{ item.price }} ₫</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <div class="row d-flex order-infor">
+            <div class="col-md-6">
+                <table class="table table-borderless">
+                    <tbody class="totals-bill">
+                        <tr>
+                            <td>
+                                <div class="text-left">
+                                    <span class="text-muted">Tên khách hàng</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span>TempName</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text-left">
+                                    <span class="text-muted">Số điện thoại</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span> 13456789</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text-left">
+                                    <span class="text-muted">Ngày đặt </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span> 1/1/2023</span></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="text-left">
+                                    <span class="text-muted">Địa chỉ giao hàng </span>
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <a href="#">Quay lại</a>
+            </div>
+
+            <div class="col-md-6">
+                <table class="table table-borderless">
+                    <tbody class="totals-bill">
+                        <tr>
+                            <td>
+                                <div class="text-left">
+                                    <span class="text-muted">Tổng phụ</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span>1000000</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text-left">
+                                    <span class="text-muted">Phí vận chuyển</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-right"><span>0 đ</span></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="text-left">
+                                    <span class="text-muted">Khuyến mãi</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-right">
+                                    <span class="text-success">0 đ</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="border-top border-bottom">
+                            <td>
+                                <div class="text-left">
+                                    <span class="font-weight-bold">Tổng tiền</span>
+                                </div>
+                            </td>
+                            <td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="order-action">
+                    <button class="btn btn-success" *ngIf="order.orderStatus == 1" disabled>
+                        Đã xác nhận
+                    </button>
+                    <button class="btn btn-warning" *ngIf="order.orderStatus == 2" disabled>
+                        Đã hủy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="container bg-white border d-flex flex-wrap align-items-center" id="container"
+    style="margin-top: 180px; border-radius: 8px">
+    <div *ngIf="order" class="h3 m-4">
+        <i class="bi bi-receipt-cutoff"></i> Chi tiết đơn hàng {{ order.orderId }}
+    </div>
+    <div class="container border m-3" style="border-radius: 4px;">
+        <table class="table table-border align-items-center">
+            <thead>
+                <tr>
+                    <th style="text-align: center">STT</th>
+                    <th style="text-align: center">Sản phẩm</th>
+                    <th style="text-align: center">Số lượng</th>
+                    <th style="text-align: center">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cart-item" *ngFor="let item of orderDetail; let i = index">
+                    <td style="text-align: center">{{ i + 1 }}</td>
+                    <td style="text-align: center">
+                        <a>
+                            <div class="product-infor-cart">
+                                <img [src]="productList[i].imgPath1" alt="" style="width: 112px" />
+                                <div class="name-product-cart">
+                                    {{ productList[i].productName }}
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td style="text-align: center">{{ item.quantity }}</td>
+                    <td style="text-align: center">
+                        {{ item.price | currency : "VND" : ""}} VNĐ
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <div class="row d-flex order-infor">
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td><span class="text-muted">Tên khách hàng:</span></td>
+                                <td><span>{{client.userName}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Số điện thoại:</span></td>
+                                <td><span>{{client.phoneNumber}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Ngày đặt:</span></td>
+                                <td><span>{{ orderdate | date : "hh:mm:ss" }} {{ orderdate | date : "fullDate" }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Địa chỉ giao hàng:</span></td>
+                                <td><span>{{orderad}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- <a href="#">Quay lại</a> -->
+                </div>
+
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td><span class="text-muted">Phí vận chuyển:</span></td>
+                                <td><span>0 ₫</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Thuế:</span></td>
+                                <td><span class="text-success">+ 10%</span></td>
+                            </tr>
+                            <tr class="border-top border-bottom">
+                                <td><span class="font-weight-bold">Tổng tiền: </span></td>
+                                <td><span>{{ orderprice | currency : "VND" : ""}} VNĐ</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="order-action">
+                        <button class="btn btn-success" *ngIf="this.orderstate == 1" disabled>
+                            Đã xác nhận
+                        </button>
+                        <button class="btn btn-warning" *ngIf="this.orderstate == 0" disabled>
+                            Đang chờ xác nhận đơn hàng
+                        </button>
+                        <button class="btn btn-danger" *ngIf="this.orderstate == 2" disabled>
+                            Đã hủy đơn hàng
+                        </button>
+                        <button class="btn btn-danger" (click)="cancelOrder(orderId)" *ngIf="this.orderstate == 0">Hủy
+                            đơn hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

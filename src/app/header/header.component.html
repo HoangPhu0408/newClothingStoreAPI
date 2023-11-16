@@ -51,132 +51,276 @@
     </div>
   </div>
 </div> -->
-<header>
-  <!-- Jumbotron -->
+<!-- <header>
   <div class="p-3 text-center bg-white border-bottom">
     <div class="container">
       <div class="row gy-3">
-        <!-- Left elements -->
         <div class="col-lg-2 col-sm-4 col-4">
-          <a href="https://mdbootstrap.com/" routerLink="/home" class="float-start">
+          <a routerLink="/home" class="float-start">
             <img src="assets/logoweb.jpg" height="56" />
           </a>
         </div>
-        <!-- Left elements -->
 
-        <!-- Center elements -->
         <div class="order-lg-last col-lg-5 col-sm-8 col-8">
           <div class="d-flex float-end pt-1">
-            <button class="me-1 border rounded py-2 px-3 nav-link d-flex align-items-center" style="font-family: Courier New, Helvetica, sans-serif;">
-              <i class="bi bi-heart-fill" [routerLink]="['/favorite-list']"><strong> Yêu thích</strong></i>
+            <button
+              class="me-1 rounded py-2 px-2 nav-link d-flex align-items-center"
+              style="font-family: Courier New, Helvetica, sans-serif"
+            >
+              <i class="bi bi-heart-fill" [routerLink]="['/favorite-list']"></i>
             </button>
-            <button class="me-1 border rounded py-2 px-3 nav-link d-flex align-items-center" style="font-family: Courier New, Helvetica, sans-serif;">
-              <i class="bi bi-bag-fill"><strong>({{totalCart}})</strong></i>
+            <button
+              class="rounded py-2 px-2 nav-link d-flex align-items-center"
+              style="font-family: Courier New, Helvetica, sans-serif"
+            >
+              <i class="bi bi-bag-fill" [routerLink]="['/shopping-cart']"
+                ><strong>({{ totalCart }})</strong></i
+              >
             </button>
-            <button class="border rounded py-2 px-3 nav-link d-flex align-items-center" style="font-family: Courier New, Helvetica, sans-serif;">
-              <i class="bi bi-person-square" [routerLink]="['/login']"><strong> Đăng nhập</strong></i>
-            </button>
+            <div class="dropdown-center">
+              <button
+                class="rounded py-2 px-2 nav-link d-flex align-items-center"
+                style="font-family: Courier New, Helvetica, sans-serif"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-person-square" style="font-size: 16px"
+                  ><strong> {{ customerName }} </strong></i
+                >
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" (click)="EditCusInfo()"
+                      >Thông tin tài khoản</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" [routerLink]="['/login']"
+                      >Đăng nhập/Đăng kí
+                    </a>
+                  </li>
+                </ul>
+              </button>
+            </div>
           </div>
         </div>
-        <!-- Center elements -->
-
-        <!-- Right elements -->
-        <div class="col-lg-5 col-md-12 col-1">
-          <div class="input-group align-items-center">
+        <div class="col-lg-5 col-md-12 col-12">
+          <div class="input-group float-center">
             <div class="form-outline">
               <div class="search">
-                <form id="searchFormTop" (ngSubmit)="SearchSubmit(f)" #f="ngForm">
-                  <input type="text" ngModel name="search_string" type="search" class="searchbox" placeholder="Search..."
-                    aria-label="Search">
+                <form
+                  id="searchFormTop"
+                  (ngSubmit)="SearchSubmit(f)"
+                  #f="ngForm"
+                >
+                  <input
+                    type="text"
+                    ngModel
+                    name="search_string"
+                    type="search"
+                    class="searchbox"
+                    placeholder="Search..."
+                    aria-label="Search"
+                  />
                   <span class="search-btn-wrap">
-                    <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
+                    <button class="search-btn" type="submit">
+                      <i class="bi bi-search"></i>
+                    </button>
                   </span>
                 </form>
               </div>
             </div>
           </div>
         </div>
-        <!-- Right elements -->
       </div>
     </div>
   </div>
-  <!-- Jumbotron -->
-
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Container wrapper -->
-    <div class="container d-flex flex-wrap align-items-center justify-content-center">
-      <!-- Toggle button -->
-      <button class="navbar-toggler border py-2 text-dark" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarLeftAlignExample" aria-controls="navbarLeftAlignExample" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="bi bi-grid-3x3-gap-fill"></i>
-      </button>
-
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
-        <!-- Left links -->
+    <div class="container">
+      <div
+        class="collapse navbar-collapse d-flex justify-content-center"
+        id="navbarLeftAlignExample"
+      >
         <ul class="nav col-12 col-md-auto mb-md-0">
           <li class="nav-item dropdown p-1">
-            <button class="btn btn-primary">
-              <a class="nav-link text-light" id="navbarDropdown" data-mdb-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-filter-left" style="font-family: Courier New, Helvetica, sans-serif; font-size: large;"> Danh mục sản phẩm</i>
+            <button class="btn">
+              <a
+                class="text-black text-decoration-none"
+                id="navbarDropdown"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-list"></i> Danh mục sản phẩm
               </a>
             </button>
-            <!-- Dropdown menu -->
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <a (click)="navigateToProductList(item.categoryId)" class="dropdown-item" *ngFor="let item of cateList">{{item.categoryName}}</a>
+                <button
+                  (click)="navigateToProductList(item.categoryId)"
+                  class="dropdown-item"
+                  *ngFor="let item of cateList"
+                >
+                  {{ item.categoryName }}
+                </button>
               </li>
             </ul>
           </li>
-          <li class="nav-item" style="padding-left: 295px;">
-            
-          </li>
           <li class="nav-item p-1">
-            <button class="btn btn-primary" style="font-size: large;">
-              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-box2-fill"></i> Sản phẩm</a>
+            <button class="btn">
+              <a
+                class="text-black text-decoration-none"
+                (click)="navigateToProductList(0)"
+                ><i class="bi bi-box2"></i> Sản phẩm</a
+              >
             </button>
           </li>
           <li class="nav-item p-1">
-            <button class="btn btn-primary" style="font-size: large;">
-              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-headset"></i> Liên hệ</a>
+            <button class="btn">
+              <a
+                class="text-black text-decoration-none"
+                routerLink="/product-list"
+                ><i class="bi bi-headset"></i> Liên hệ</a
+              >
             </button>
           </li>
           <li class="nav-item p-1">
-            <button class="btn btn-primary" style="font-size: large;">
-              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-newspaper"></i> Tin tức</a>
+            <button class="btn">
+              <a
+                class="text-black text-decoration-none"
+                routerLink="/product-list"
+                ><i class="bi bi-newspaper"></i> Tin tức</a
+              >
             </button>
           </li>
           <li class="nav-item p-1">
-            <button class="btn btn-primary" style="font-size: large;">
-              <a class="nav-link text-light" style="font-family: Courier New, Helvetica, sans-serif;" routerLink="/product-list"><i class="bi bi-person-vcard"></i> Giới thiệu</a>
+            <button class="btn">
+              <a
+                class="text-black text-decoration-none"
+                routerLink="/product-list"
+                ><i class="bi bi-person-vcard"></i> Giới thiệu</a
+              >
             </button>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Hot offers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Gift boxes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Menu item</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Menu name</a>
-          </li> -->
-          <!-- Navbar dropdown -->
         </ul>
-        <!-- Left links -->
       </div>
     </div>
-    <!-- Container wrapper -->
   </nav>
-  <!-- Navbar -->
-  <!-- Jumbotron -->
-  
-  <!-- Jumbotron -->
+</header> -->
+<header class="consectetur">
+  <div id="option-header">
+    <!-- Navbar search -->
+    <a id="phone-number">
+      <i class="bi bi-envelope-fill"></i>
+      Contact us:
+    </a>
+    <p><i class="bi bi-telephone-fill"></i> 0987654321</p>
+    <form id="header-search" (ngSubmit)="SearchSubmit(f)" #f="ngForm">
+      <input type="text" ngModel name="search_string" type="search" class="searchbox" placeholder="Search..."
+        aria-label="Search" id="option-header-search" />
+      <button id="btn-search" class="btn" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+    <div id="user" class="dropdown-center" style="cursor: default">
+      <button class="btn rounded nav-link d-flex align-items-center" type="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <i class="bi bi-person-fill" style="font-size: 16px"><strong> {{ customerName }} </strong></i>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item text-dark" (click)="EditCusInfo()" style="
+              padding: 8px 4px;
+              margin: 0;
+              text-align: center;
+              border-radius: 5px;
+            "><i class="bi bi-info-circle-fill text-warning"></i> Thông tin tài
+            khoản</a>
+        </li>
+        <li>
+          <a class="dropdown-item text-dark" (click)="toClientOrder()"
+            style="padding: 8px 4px; margin: 0; text-align: center"><i class="bi bi-receipt-cutoff text-black"></i> Đơn
+            hàng của bạn</a>
+        </li>
+        <li>
+          <a *ngIf="customerState; else Login" class="dropdown-item text-dark" href="#" style="
+              padding: 8px 4px;
+              margin: 0;
+              text-align: center;
+              border-radius: 5px;
+            "><i class="bi bi-box-arrow-in-right text-danger"></i> Đăng xuất</a>
+          <ng-template #Login>
+            <a class="dropdown-item text-dark" [routerLink]="['/login']" style="
+                padding: 8px 4px;
+                margin: 0;
+                text-align: center;
+                border-radius: 5px;
+              "><i class="bi bi-box-arrow-in-right text-success"></i> Đăng nhập /
+              Đăng kí</a>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="navbar">
+    <a routerLink="/home">
+      <img src="assets/logoweb.jpg" alt="" width="280vw" />
+    </a>
+    <div class="dropdown" id="dropdown">
+      <a id="button" class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-list"></i> Danh mục sản phẩm
+      </a>
+      <ul class="dropdown-menu" style="text-align: center;" id="dropdown-menu">
+        <li *ngFor="let item of cateList">
+          <button (click)="navigateToProductList(item.categoryId)" class="dropdown-item">
+            {{ item.categoryName }}
+          </button>
+        </li>
+      </ul>
+    </div>
+    <ul id="navbar-category">
+      <li>
+        <button class="btn" style="border: 0">
+          <a class="text-black text-decoration-none" (click)="navigateToProductList(0)"><i class="bi bi-box2"></i> Sản
+            phẩm</a>
+        </button>
+      </li>
+      <li>
+        <button class="btn" style="border: 0">
+          <a class="text-black text-decoration-none" routerLink="/product-list"><i class="bi bi-headset"></i> Liên
+            hệ</a>
+        </button>
+      </li>
+      <li>
+        <button class="btn" style="border: 0">
+          <a class="text-black text-decoration-none" routerLink="/product-list"><i class="bi bi-newspaper"></i> Tin
+            tức</a>
+        </button>
+      </li>
+      <li>
+        <button class="btn" style="border: 0">
+          <a class="text-black text-decoration-none" routerLink="/product-list"><i class="bi bi-person-vcard"></i> Giới
+            thiệu</a>
+        </button>
+      </li>
+    </ul>
+    <ul id="navbar-hint">
+      <li>
+        <a style="color: red;" (click)="toFavorList()"><i class="bi bi-heart-fill"></i></a>
+      </li>
+      <li>
+        <a [routerLink]="['/shopping-cart']" style="position: relative"><i class="bi bi-bag-fill">
+            <span class="badge rounded-pill badge-secondary" style="
+                position: absolute;
+                right: 0.08rem;
+                font-size: 0.8rem;
+                color: red;
+                padding: 0 3px;
+                font-style: normal;
+              ">
+              {{ totalCart }}
+            </span>
+          </i></a>
+      </li>
+    </ul>
+  </div>
 </header>

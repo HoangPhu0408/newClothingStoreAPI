@@ -31,3 +31,50 @@
     /* Định dạng kích thước khung chứa */
     height: 400px;
 }
+.icon-hover:hover {
+    border-color: #ba2c24 !important;
+    background-color: white !important;
+    color: #ba2c24 !important;
+}
+
+.icon-hover:hover i {
+    color: #ba2c24 !important;
+}
+#comment {
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng của khung chứa */
+    max-width: 100%;
+    /* Giới hạn chiều rộng tối đa là 100% */
+    box-sizing: border-box;
+    border-radius: 10px;
+    /* Bao gồm cả padding và border trong kích thước */
+    resize: vertical;
+    /* Cho phép điều chỉnh kích thước theo chiều dọc */
+}
+.user-comment{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.comment-content {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+            <h2>Tổng số đơn hàng</h2>
+            <p class="card-text">{{this.orderListLength}}</p>
+        </div>
+    </div>
+
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+            <h2>Tổng doanh thu</h2>
+            <p class="card-text">{{this.orderPrice}}</p>
+        </div>
+    </div>
+
+
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+            <h2>Số lượng người dùng</h2>
+            <p class="card-text">{{this.cusListLength}}</p>
+        </div>
+    </div>
+
+
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+            <h2>Số lượng sản phẩm bán ra</h2>
+            <p class="card-text">{{this.orderProduct}}</p>
+        </div>
+    </div>
+    <div class="card" style="width: 25rem;" *ngFor="let item of orderDetailList">
+        <div class="card-body">
+            <h2>Sản phẩm bán ra nhiều nhất</h2>
+            <p class="card-text">{{item.productId}}</p>
+        </div>
+    </div>
+</div>
